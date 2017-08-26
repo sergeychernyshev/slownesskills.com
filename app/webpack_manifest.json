@@ -1,5 +1,8 @@
 {
-  "c1-reactcore.js": "c1-reactcore.js",
-  "c2-libs.js": "c2-libs.js",
-  "c3-main.js": "c3-main.js"
+  "c1-reactcore.js": "c1-reactcore.0923ca8bd9e8829eb692.js",
+  "c1-reactcore.js.map": "c1-reactcore.0923ca8bd9e8829eb692.js.map",
+  "c2-libs.js": "c2-libs.0923ca8bd9e8829eb692.js",
+  "c2-libs.js.map": "c2-libs.0923ca8bd9e8829eb692.js.map",
+  "c3-main.js": "c3-main.0923ca8bd9e8829eb692.js",
+  "c3-main.js.map": "c3-main.0923ca8bd9e8829eb692.js.map"
 }

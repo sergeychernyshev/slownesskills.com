@@ -14,10 +14,7 @@ const config = {
       "react",
       "react-dom",
       "react-router",
-      "react-router-redux",
-      "react-redux",
-      "prop-types",
-      "redux-thunk"
+      "prop-types"
     ],
     "c2-libs": [
       "react-bootstrap/lib/Glyphicon",
@@ -31,8 +28,6 @@ const config = {
       "react-bootstrap/lib/FormControl",
       "react-bootstrap/lib/ControlLabel",
       "react-bootstrap/lib/Button",
-      "react-bootstrap-typeahead",
-      "react-html-id",
     ],
     "c3-main": path.resolve(__dirname, "src/index.jsx")
   },
