@@ -9,6 +9,8 @@ export default () => <div className="container-fluid">
   </div>
 
   <div className="row">
-  If you build slow sites, you kill people&apos;s time
+    <div className="col-md-12">
+      If you build slow sites, you kill people&apos;s time
+    </div>
   </div>
 </div>

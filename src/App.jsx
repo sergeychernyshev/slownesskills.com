@@ -8,9 +8,13 @@ const App = props => {
     <div>
       {props.children}
 
-      <div className="row footer">
+      <div className="row" style={{
+        borderTop: '1px solid silver',
+        marginTop: '2em',
+        padding: '1.5em'}}
+      >
         <div className="col-xs-12">
-          © DeckPack 2016-{year}
+          © Slowness Kills 2016-{year}
         </div>
       </div>
     </div>

@@ -9,6 +9,8 @@ export default () => <div className="container-fluid">
   </div>
 
   <div className="row">
-  Awesome!
+    <div className="col-md-12">
+      Awesome!
+    </div>
   </div>
 </div>
