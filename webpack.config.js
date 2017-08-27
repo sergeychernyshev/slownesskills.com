@@ -85,7 +85,6 @@ const config = {
       },
       sourceMap: true
     }),
-    new ExtractTextPlugin("[name].[contenthash].css"),
     new HtmlWebpackPlugin({
       title: 'Slowness Kills',
       template: 'src/index.ejs',
@@ -106,7 +105,14 @@ if (process.env.NODE_ENV === "production") {
 
 if (process.env.NODE_ENV === "watch") {
   config.output.filename = "[name].js";
+  config.plugins.push(
+    new ExtractTextPlugin("[name].css")
+  );
 } else {
+  config.plugins.push(
+    new ExtractTextPlugin("[name].[contenthash].css")
+  );
+
   config.plugins.push(
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
