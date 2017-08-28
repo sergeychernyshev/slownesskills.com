@@ -17,17 +17,8 @@ const config = {
       "prop-types"
     ],
     "c2-libs": [
-      "react-bootstrap/lib/Glyphicon",
-      "react-bootstrap/lib/Grid",
-      "react-bootstrap/lib/Row",
-      "react-bootstrap/lib/PageHeader",
-      "react-bootstrap/lib/Col",
-      "react-bootstrap/lib/Form",
-      "react-bootstrap/lib/FormGroup",
-      "react-bootstrap/lib/InputGroup",
-      "react-bootstrap/lib/FormControl",
-      "react-bootstrap/lib/ControlLabel",
-      "react-bootstrap/lib/Button",
+      "rc-slider",
+      "rc-tooltip"
     ],
     "c3-main": path.resolve(__dirname, "src/index.jsx")
   },
