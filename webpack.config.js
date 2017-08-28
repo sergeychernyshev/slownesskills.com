@@ -18,7 +18,8 @@ const config = {
     ],
     "c2-libs": [
       "rc-slider",
-      "rc-tooltip"
+      "rc-tooltip",
+      "react-bootstrap/lib/Navbar"
     ],
     "c3-main": path.resolve(__dirname, "src/index.jsx")
   },
@@ -27,11 +28,11 @@ const config = {
     filename: "[name].[hash].js"
   },
   resolve: {
-    extensions: [".js", ".jsx"]
-    // alias: {
-    //   react: "preact-compat",
-    //   "react-dom": "preact-compat"
-    // }
+    extensions: [".js", ".jsx"],
+    alias: {
+      react: "preact-compat",
+      "react-dom": "preact-compat"
+    }
   },
   module: {
     rules: [

@@ -1,55 +1,17 @@
 import React from "react";
-import { Link } from "react-router";
-import Tooltip from 'rc-tooltip';
-import Slider from 'rc-slider';
-import { number, bool } from "prop-types";
+import Slider from "rc-slider";
 
-import 'rc-slider/assets/index.css';
-
-const Handle = Slider.Handle;
-
-const handle = (props) => {
-  const { value, dragging, index, ...restProps } = props;
-
-  return (
-    <Tooltip
-      prefixCls="rc-slider-tooltip"
-      overlay={value}
-      visible={dragging}
-      placement="top"
-      key={index}
-    >
-      <Handle value={value} {...restProps} />
-    </Tooltip>
-  );
-};
-
-handle.defaultProps = {
-  value: 0,
-  dragging: false,
-  index: 0
-};
-
-handle.defaultProps = {
-  dragging: false
-}
-
-handle.propTypes = {
-  value: number.isRequired,
-  dragging: bool,
-  index: number.isRequired
-};
+import "rc-slider/assets/index.css";
 
 const SECONDS_IN_HUMAN_LIFE = 60 * 60 * 24 * 365 * 80;
 
 class SlownessKills extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      views: 10000000, // 10 million
-      slowness: 10 // 1000 ms = 1 second
+      views: 20000000, // 10 million
+      slowness: 10, // 1000 ms = 1 second
     };
 
     this.viewSliderChange = this.viewSliderChange.bind(this);
@@ -58,14 +20,14 @@ class SlownessKills extends React.Component {
 
   viewSliderChange(value) {
     this.setState({
-      views: value
+      views: value,
     });
   }
 
   slownessSliderChange(value) {
     this.setState({
-      slowness: value
-    })
+      slowness: value,
+    });
   }
 
   render() {
@@ -75,38 +37,37 @@ class SlownessKills extends React.Component {
 
     let message;
     if (this.state.views === 0) {
-      message = (
-        <span style={{fontSize: 'xx-large'}}>
-          Speed doesn&apos;t matter if nobody looks at your site
-        </span>
-      );
+      message = <span style={{fontSize: "xx-large"}}>Speed doesn&apos;t matter if nobody looks at your site</span>;
     } else if (deathsOneDigit >= 1 && deathsOneDigit < 2) {
       message = (
-        <span style={{fontSize: 'xx-large'}}>
-          You kill<br/>
-          <b>one person</b><br/>
+        <span style={{fontSize: "xx-large"}}>
+          You kill<br />
+          <b className="text-danger">one person</b>
+          <br />
           per year
         </span>
       );
     } else if (deathsOneDigit >= 2) {
       message = (
-        <span style={{fontSize: 'xx-large'}}>
-          You kill<br/>
-          <b>{Math.round(deaths)} people</b><br/>
+        <span style={{fontSize: "xx-large"}}>
+          You kill<br />
+          <b className="text-danger">{Math.round(deaths)} people</b>
+          <br />
           per year
         </span>
       );
     } else if (deaths > 0.01) {
       message = (
-        <span style={{fontSize: 'xx-large'}}>
-          You kill<br/>
-          <b>one person</b><br/>
-          every <b>{Math.round(10 / deaths) / 10} years</b>
+        <span style={{fontSize: "xx-large"}}>
+          You kill<br />
+          <b className="text-danger">one person</b>
+          <br />
+          every <b className="text-danger">{Math.round(10 / deaths) / 10}</b> years
         </span>
       );
     } else {
       message = (
-        <span style={{fontSize: 'xx-large'}}>
+        <span className="text-success" style={{fontSize: "xx-large"}}>
           Your site seems to be fast enough for people to survive
         </span>
       );
@@ -114,64 +75,74 @@ class SlownessKills extends React.Component {
 
     let views;
     if (this.state.views >= 1000000000) {
-      views = (<b>{Math.round(this.state.views / 10000000) / 10}B</b>);
+      views = (
+        <b className="text-warning">
+          {Math.round(this.state.views / 10000000) / 10}B
+        </b>
+      );
     } else if (this.state.views >= 1000000) {
-      views = (<b>{Math.round(this.state.views / 100000) / 10}M</b>);
+      views = (
+        <b className="text-warning">
+          {Math.round(this.state.views / 100000) / 10}M
+        </b>
+      );
     } else {
-      views = (<b>{this.state.views}</b>);
+      views = (
+        <b className="text-warning">
+          {this.state.views}
+        </b>
+      );
     }
 
-    return <div className="container-fluid">
-      <div className="page-header">
-        <h2>
-          Slowness Kills | <Link to={"/about"}>About</Link>
-        </h2>
-      </div>
-
-      <div className="row">
-        <div className="col-md-4">
-          <div className="well" style={{textAlign: 'center'}}>
-            <p style={{fontSize: 'xx-large'}}>
-              Monthly Page Views<br/>
-              {views}
-            </p>
-
-            <Slider
-              step={1000000}
-              defaultValue={1000000}
-              value={this.state.views}
-              min={0}
-              max={100000000}
-              onChange={this.viewSliderChange}
-              handle={handle}
-            />
-          </div>
+    return (
+      <div className="container-fluid">
+        <div className="jumbotron">
+          <h1>Slowness Kills</h1>
+          <p>When you build slow sites, you take time out of people&apos;s lives.</p>
         </div>
-        <div className="col-md-4">
-          <div className="well" style={{textAlign: 'center'}}>
-            <p style={{fontSize: 'xx-large'}}>
-              Page Load Time<br/>
-              <b>{this.state.slowness} seconds</b>
-            </p>
 
-            <Slider
-              step={0.1}
-              defaultValue={10}
-              value={this.state.slowness}
-              min={0.1}
-              max={30}
-              onChange={this.slownessSliderChange}
-              handle={handle}
-            />
+        <div className="row">
+          <div className="col-md-4">
+            <div style={{textAlign: "center"}}>
+              <p style={{fontSize: "xx-large"}}>
+                Monthly Page Views<br />
+                {views}
+              </p>
+
+              <Slider
+                step={1000000}
+                value={this.state.views}
+                min={0}
+                max={100000000}
+                onChange={this.viewSliderChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="well" style={{textAlign: 'center'}}>
-            {message}
+          <div className="col-md-4">
+            <div style={{textAlign: "center"}}>
+              <p style={{fontSize: "xx-large"}}>
+                Page Load Time<br />
+                <b className="text-warning">{this.state.slowness} seconds</b>
+              </p>
+
+              <Slider
+                step={0.1}
+                defaultValue={10}
+                value={this.state.slowness}
+                min={0.1}
+                max={30}
+                onChange={this.slownessSliderChange}
+              />
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div style={{textAlign: "center"}}>
+              {message}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    );
   }
 }
 

@@ -1,16 +1,17 @@
 import React from "react";
-import { Link } from "react-router";
 
 export default () => <div className="container-fluid">
   <div className="page-header">
-    <h2>
-      <Link to={"/"}>Slowness Kills</Link> | About
-    </h2>
+    <h1>
+      About The Project
+    </h1>
   </div>
 
   <div className="row">
     <div className="col-md-12">
-      If you build slow sites, you kill people&apos;s time
+      <p style={{fontSize: 'large'}}>
+        <b><i className="text-success">Slowness Kills</i></b> is a project by <a target="_blank" href="https://www.sergeychernyshev.com/" rel="noopener noreferrer">Sergey Chernyshev</a> who cares about performance and <span className="text-danger">can&apos;t stand slow sites</span>.
+      </p>
     </div>
   </div>
 </div>
