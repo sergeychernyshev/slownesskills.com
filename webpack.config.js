@@ -17,6 +17,7 @@ const config = {
       "prop-types"
     ],
     "c2-libs": [
+      "numeral",
       "rc-slider",
       "rc-tooltip",
       "react-bootstrap/lib/Navbar"
@@ -25,7 +26,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, "app/"),
-    filename: "[name].[hash].js"
+    filename: "[name].[chunkhash].js"
   },
   resolve: {
     extensions: [".js", ".jsx"],

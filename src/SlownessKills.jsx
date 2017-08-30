@@ -1,8 +1,10 @@
 import React from "react";
 import Slider from "rc-slider";
+import numeral from "numeral";
 
 import "rc-slider/assets/index.css";
 
+const SECONDS_IN_ONE_HOUR = 60 * 60;
 const SECONDS_IN_HUMAN_LIFE = 60 * 60 * 24 * 365 * 80;
 
 class SlownessKills extends React.Component {
@@ -31,66 +33,54 @@ class SlownessKills extends React.Component {
   }
 
   render() {
+    const hours = numeral(this.state.views * this.state.slowness / SECONDS_IN_ONE_HOUR).format('0,0');
     const deaths = this.state.views * 12 * this.state.slowness / SECONDS_IN_HUMAN_LIFE;
 
     const deathsOneDigit = Math.round(10 * deaths) / 10;
 
-    let message;
+    let hoursMessage = (
+      <p>
+        <b className="text-danger">{hours}</b><br/>
+        hours per month
+      </p>
+    );
+
+    let deathsMessage;
     if (this.state.views === 0) {
-      message = <span style={{fontSize: "xx-large"}}>Speed doesn&apos;t matter if nobody looks at your site</span>;
+      hoursMessage = '';
+      deathsMessage = <span>Speed doesn&apos;t matter if nobody looks at your site</span>;
     } else if (deathsOneDigit >= 1 && deathsOneDigit < 2) {
-      message = (
-        <span style={{fontSize: "xx-large"}}>
-          You kill<br />
-          <b className="text-danger">one person</b>
-          <br />
-          per year
-        </span>
+      deathsMessage = (
+        <p>
+          enough to kill<br />
+          <b className="text-danger">one person</b><br />
+          every year
+        </p>
       );
     } else if (deathsOneDigit >= 2) {
-      message = (
-        <span style={{fontSize: "xx-large"}}>
-          You kill<br />
+      deathsMessage = (
+        <p>
+          enough to kill<br />
           <b className="text-danger">{Math.round(deaths)} people</b>
           <br />
-          per year
-        </span>
+          every year
+        </p>
       );
     } else if (deaths > 0.01) {
-      message = (
-        <span style={{fontSize: "xx-large"}}>
-          You kill<br />
+      deathsMessage = (
+        <p>
+          enough to kill<br />
           <b className="text-danger">one person</b>
           <br />
           every <b className="text-danger">{Math.round(10 / deaths) / 10}</b> years
-        </span>
+        </p>
       );
     } else {
-      message = (
-        <span className="text-success" style={{fontSize: "xx-large"}}>
+      hoursMessage = '';
+      deathsMessage = (
+        <p className="text-success">
           Your site seems to be fast enough for people to survive
-        </span>
-      );
-    }
-
-    let views;
-    if (this.state.views >= 1000000000) {
-      views = (
-        <b className="text-warning">
-          {Math.round(this.state.views / 10000000) / 10}B
-        </b>
-      );
-    } else if (this.state.views >= 1000000) {
-      views = (
-        <b className="text-warning">
-          {Math.round(this.state.views / 100000) / 10}M
-        </b>
-      );
-    } else {
-      views = (
-        <b className="text-warning">
-          {this.state.views}
-        </b>
+        </p>
       );
     }
 
@@ -101,46 +91,54 @@ class SlownessKills extends React.Component {
           <p>When you build slow sites, you take time out of people&apos;s lives.</p>
         </div>
 
-        <div className="row">
-          <div className="col-md-4">
-            <div style={{textAlign: "center"}}>
-              <p style={{fontSize: "xx-large"}}>
-                Monthly Page Views<br />
-                {views}
-              </p>
+        <section style={{textAlign: "center", fontSize: "xx-large"}}>
+          <div className="row">
+            <div className="col-sm-6">
+              <div>
+                <p>
+                  Monthly Page Views<br />
+                  <b className="text-warning">
+                    {numeral(this.state.views).format('0,0a').toUpperCase()}
+                  </b>
+                </p>
 
-              <Slider
-                step={1000000}
-                value={this.state.views}
-                min={0}
-                max={100000000}
-                onChange={this.viewSliderChange}
-              />
+                <Slider
+                  step={1000000}
+                  value={this.state.views}
+                  min={0}
+                  max={100000000}
+                  onChange={this.viewSliderChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="col-md-4">
-            <div style={{textAlign: "center"}}>
-              <p style={{fontSize: "xx-large"}}>
-                Page Load Time<br />
-                <b className="text-warning">{this.state.slowness} seconds</b>
-              </p>
+            <div className="col-sm-6">
+              <div>
+                <p>
+                  Page Load Time<br />
+                  <b className="text-warning">{this.state.slowness} seconds</b>
+                </p>
 
-              <Slider
-                step={0.1}
-                defaultValue={10}
-                value={this.state.slowness}
-                min={0.1}
-                max={30}
-                onChange={this.slownessSliderChange}
-              />
+                <Slider
+                  step={0.1}
+                  defaultValue={10}
+                  value={this.state.slowness}
+                  min={0.1}
+                  max={30}
+                  onChange={this.slownessSliderChange}
+                />
+              </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div style={{textAlign: "center"}}>
-              {message}
+
+          <div className="row">
+            {hoursMessage && <div className="col-sm-6" style={{marginTop: '2em'}}>
+              {hoursMessage}
+            </div>}
+            <div className={hoursMessage ? "col-sm-6" : "col-sm-12"} style={{marginTop: '2em'}}>
+              {deathsMessage}
             </div>
           </div>
-        </div>
+        </section>
       </div>
     );
   }
