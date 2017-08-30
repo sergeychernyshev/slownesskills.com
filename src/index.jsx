@@ -15,7 +15,7 @@ render(
 
       <Route path="/index.html" component={SlownessKills} />
 
-      <Route path="/about" component={About} />
+      <Route path="/about.html" component={About} />
 
       <Route path="*" component={NotFound} />
     </Route>

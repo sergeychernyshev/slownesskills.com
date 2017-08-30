@@ -17,7 +17,7 @@ const App = props => (
       </Navbar.Header>
       <Navbar.Collapse>
         <ul role="navigation" className="nav navbar-nav navbar-right">
-          <li><Link to={"/about"}>About</Link></li>
+          <li><Link to={"/about.html"}>About</Link></li>
         </ul>
       </Navbar.Collapse>
     </Navbar>

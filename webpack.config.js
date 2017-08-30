@@ -82,6 +82,11 @@ const config = {
       title: 'Slowness Kills',
       template: 'src/index.ejs',
       filename: '../index.html'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'About Slowness Kills Project',
+      template: 'src/about.ejs',
+      filename: '../about.html'
     })
   ]
 };

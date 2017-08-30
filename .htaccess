@@ -1,5 +1,0 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-
-	RewriteRule ^about		index.html	[L,QSA]
-</IFModule>

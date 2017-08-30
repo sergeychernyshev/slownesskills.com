@@ -19,5 +19,5 @@ check:
 	npm-check --specials=bin,webpack,eslint,babel --skip-unused
 
 commit:	prod
-	git add app index.html
+	git add app index.html about.html
 	git commit
