@@ -1,16 +1,26 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<title>Slowness Kills</title>
+	<title><%= htmlWebpackPlugin.options.title %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/images/logo.png" />
-<link href="app/c3-main.3777066cc986d11412adce5b97cd79e7.css" rel="stylesheet"></head>
+</head>
 <body>
 
 <div id="app"><div><nav class="navbar navbar-inverse"><div class="container"><div class="navbar-header"><a class="navbar-brand" href="/">Slowness Kills</a><button type="button" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="navbar-collapse collapse"><ul role="navigation" class="nav navbar-nav navbar-right"><li><a href="/about">About</a></li></ul></div></div></nav><div class="container"><div class="container-fluid"><div class="page-header"><h1>About The Project</h1></div><div class="row"><div class="col-md-12"><p style="font-size: large;"><b><i class="text-success">Slowness Kills</i></b> is a project by <a target="_blank" href="https://www.sergeychernyshev.com/" rel="noopener noreferrer">Sergey Chernyshev</a> who cares about performance and <span class="text-danger">can't stand slow sites</span>.</p></div></div></div></div><footer class="panel-footer" style="margin-top: 5em; padding-bottom: 5em;"><div class="container"><div class="row"><div class="col-lg-12">© 2017 Sergey Chernyshev</div></div></div></footer></div></div>
+
+<% if(htmlWebpackPlugin.options.prod){ %>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-817839-44', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<% } %>
 
 </html>

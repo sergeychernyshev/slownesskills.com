@@ -77,19 +77,12 @@ const config = {
         warnings: false
       },
       sourceMap: true
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Slowness Kills',
-      template: 'src/index.ejs',
-      filename: '../index.html'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'About Slowness Kills Project',
-      template: 'src/about.ejs',
-      filename: '../about.html'
     })
   ]
 };
+
+let prod = false;
+let titlePrefix = '';
 
 if (process.env.NODE_ENV === "production") {
   config.plugins.push(
@@ -99,6 +92,10 @@ if (process.env.NODE_ENV === "production") {
       }
     })
   );
+
+  prod = true;
+} else {
+  titlePrefix = '[DEV] ';
 }
 
 if (process.env.NODE_ENV === "watch") {
@@ -106,6 +103,8 @@ if (process.env.NODE_ENV === "watch") {
   config.plugins.push(
     new ExtractTextPlugin("[name].css")
   );
+
+  titlePrefix = '[WATCH] ';
 } else {
   config.plugins.push(
     new ExtractTextPlugin("[name].[contenthash].css")
@@ -122,5 +121,18 @@ if (process.env.NODE_ENV === "watch") {
     hints: "warning"
   };
 }
+
+config.plugins.push(new HtmlWebpackPlugin({
+  title: `${titlePrefix}Slowness Kills`,
+  template: 'src/index.ejs',
+  filename: '../index.html',
+  prod
+}));
+config.plugins.push(new HtmlWebpackPlugin({
+  title: `${titlePrefix}About Slowness Kills Project`,
+  template: 'src/about.ejs',
+  filename: '../about.html',
+  prod
+}));
 
 module.exports = config;
