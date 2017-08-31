@@ -7,6 +7,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const ENABLE_GOOGLE_ANALYTICS_IN_PROD = true;
+
 const config = {
   devtool: "source-map",
   entry: {
@@ -124,13 +126,15 @@ config.plugins.push(new HtmlWebpackPlugin({
   title: `${titlePrefix}Slowness Kills`,
   template: 'src/index.ejs',
   filename: '../index.html',
-  prod
+  prod,
+  analytics: prod && ENABLE_GOOGLE_ANALYTICS_IN_PROD
 }));
 config.plugins.push(new HtmlWebpackPlugin({
   title: `${titlePrefix}About Slowness Kills Project`,
   template: 'src/about.ejs',
   filename: '../about.html',
-  prod
+  prod,
+  analytics: prod && ENABLE_GOOGLE_ANALYTICS_IN_PROD
 }));
 
 module.exports = config;
