@@ -65,8 +65,6 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       names: ["c2-libs", "c1-reactcore"],
       minChunks: Infinity
-      // (with more entries, this ensures that no other module
-      //  goes into the vendor chunk)
     }),
     new WebpackMd5Hash(),
     new ManifestPlugin({
