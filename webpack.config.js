@@ -12,22 +12,11 @@ const ENABLE_GOOGLE_ANALYTICS_IN_PROD = true;
 const config = {
   devtool: "source-map",
   entry: {
-    "c1-reactcore": [
-      "react",
-      "react-dom",
-      "react-router",
-      "prop-types"
-    ],
-    "c2-libs": [
-      "numeral",
-      "rc-slider/lib/Slider",
-      "react-bootstrap/lib/Navbar"
-    ],
-    "c3-main": path.resolve(__dirname, "src/index.jsx")
+    "app": path.resolve(__dirname, "src/index.jsx")
   },
   output: {
     path: path.resolve(__dirname, "app/"),
-    filename: "[name].[chunkhash].js"
+    filename: "[name].[hash].js"
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -62,10 +51,6 @@ const config = {
       root: path.resolve(__dirname),
       verbose: true,
       dry: false
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ["c2-libs", "c1-reactcore"],
-      minChunks: Infinity
     }),
     new WebpackMd5Hash(),
     new ManifestPlugin({
