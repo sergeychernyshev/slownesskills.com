@@ -20,8 +20,7 @@ const config = {
     ],
     "c2-libs": [
       "numeral",
-      "rc-slider",
-      "rc-tooltip",
+      "rc-slider/lib/Slider",
       "react-bootstrap/lib/Navbar"
     ],
     "c3-main": path.resolve(__dirname, "src/index.jsx")
