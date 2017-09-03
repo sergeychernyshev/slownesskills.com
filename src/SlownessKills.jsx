@@ -40,6 +40,7 @@ class SlownessKills extends React.Component {
 
     let hoursMessage = (
       <p>
+        takes away<br/>
         <b className="text-danger">{hours}</b><br/>
         hours per month
       </p>
