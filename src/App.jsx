@@ -4,6 +4,8 @@ import { element } from "prop-types";
 
 import Navbar from "react-bootstrap/lib/Navbar";
 
+import "../css/bootstrap.css";
+
 const App = props => (
   <div>
     <Navbar inverse collapseOnSelect>
