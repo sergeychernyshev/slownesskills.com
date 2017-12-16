@@ -34,9 +34,9 @@ class SlownessKills extends React.Component {
 
   render() {
     const hours = numeral(this.state.views * this.state.slowness / SECONDS_IN_ONE_HOUR).format('0,0');
-    const deaths = this.state.views * 12 * this.state.slowness / SECONDS_IN_HUMAN_LIFE;
+    const lifetimes = this.state.views * 12 * this.state.slowness / SECONDS_IN_HUMAN_LIFE;
 
-    const deathsOneDigit = Math.round(10 * deaths) / 10;
+    const lifetimesOneDigit = Math.round(10 * lifetimes) / 10;
 
     let hoursMessage = (
       <p>
@@ -46,39 +46,39 @@ class SlownessKills extends React.Component {
       </p>
     );
 
-    let deathsMessage;
+    let lifetimesMessage;
     if (this.state.views === 0) {
       hoursMessage = '';
-      deathsMessage = <span>Speed doesn&apos;t matter if nobody looks at your site</span>;
-    } else if (deathsOneDigit >= 1 && deathsOneDigit < 2) {
-      deathsMessage = (
+      lifetimesMessage = <span>Speed doesn&apos;t matter if nobody looks at your site</span>;
+    } else if (lifetimesOneDigit >= 1 && lifetimesOneDigit < 2) {
+      lifetimesMessage = (
         <p>
-          enough to kill<br />
-          <b className="text-danger">one person</b><br />
+          which equals to<br />
+          <b className="text-danger">one lifetime</b><br />
           every year
         </p>
       );
-    } else if (deathsOneDigit >= 2) {
-      deathsMessage = (
+    } else if (lifetimesOneDigit >= 2) {
+      lifetimesMessage = (
         <p>
-          enough to kill<br />
-          <b className="text-danger">{Math.round(deaths)} people</b>
+          which equals<br />
+          <b className="text-danger">{Math.round(lifetimes)} lifetimes</b>
           <br />
           every year
         </p>
       );
-    } else if (deaths > 0.01) {
-      deathsMessage = (
+    } else if (lifetimes > 0.01) {
+      lifetimesMessage = (
         <p>
-          enough to kill<br />
-          <b className="text-danger">one person</b>
+          which equals<br />
+          <b className="text-danger">one lifetime</b>
           <br />
-          every <b className="text-danger">{Math.round(10 / deaths) / 10}</b> years
+          every <b className="text-danger">{Math.round(10 / lifetimes) / 10}</b> years
         </p>
       );
     } else {
       hoursMessage = '';
-      deathsMessage = (
+      lifetimesMessage = (
         <p className="text-success">
           Your site seems to be fast enough for people to survive
         </p>
@@ -123,7 +123,7 @@ class SlownessKills extends React.Component {
                   step={0.1}
                   defaultValue={10}
                   value={this.state.slowness}
-                  min={0.1}
+                  min={1}
                   max={30}
                   onChange={this.slownessSliderChange}
                 />
@@ -136,7 +136,7 @@ class SlownessKills extends React.Component {
               {hoursMessage}
             </div>}
             <div className={hoursMessage ? "col-sm-6" : "col-sm-12"} style={{marginTop: '2em'}}>
-              {deathsMessage}
+              {lifetimesMessage}
             </div>
           </div>
         </section>
