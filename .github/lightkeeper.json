@@ -1,0 +1,5 @@
+{
+  "baseUrl": "{target_url}",
+  "ci": "netlify",
+  "type": "status"
+}
