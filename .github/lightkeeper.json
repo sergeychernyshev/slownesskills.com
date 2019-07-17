@@ -5,9 +5,9 @@
   "settings": {
     "categories": {
       "performance": 100,
-      "accessibility": 100,
-      "best-practices": 100,
-      "pwa": 100
+      "accessibility": 80,
+      "best-practices": 90,
+      "pwa": 55
     },
     "budgets": [
       {
