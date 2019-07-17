@@ -1,0 +1,46 @@
+{
+  "baseUrl": "{target_url}",
+  "ci": "deploy/netlify",
+  "type": "status",
+  "settings": {
+    "categories": {
+      "performance": 100,
+      "accessibility": 80,
+      "best-practices": 90,
+      "pwa": 55
+    },
+    "budgets": [
+      {
+        "resourceSizes": [
+          {
+            "resourceType": "script",
+            "budget": 300
+          },
+          {
+            "resourceType": "image",
+            "budget": 100
+          },
+          {
+            "resourceType": "third-party",
+            "budget": 200
+          },
+          {
+            "resourceType": "total",
+            "budget": 1000
+          }
+        ],
+        "resourceCounts": [
+          {
+            "resourceType": "third-party",
+            "budget": 50
+          },
+          {
+            "resourceType": "total",
+            "budget": 50
+          }
+        ]
+      }
+    ]
+  },
+  "routes": ["/"]
+}
