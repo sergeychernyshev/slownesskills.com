@@ -63,12 +63,12 @@
     "numeral": "^2.0.6",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
-    "prop-types": "^15.5.10",
+    "prop-types": "^15.6.2",
     "rc-slider": "^8.3.1",
     "rc-tooltip": "^3.4.8",
-    "react": "^15.6.1",
+    "react": "^16.5.0",
     "react-bootstrap": "^0.31.2",
-    "react-dom": "^16.0.1",
+    "react-dom": "^16.5.0",
     "react-router": "^2.8.1"
   }
 }
