@@ -40,7 +40,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "6.24.1",
     "clean-webpack-plugin": "^0.1.16",
-    "css-loader": "^0.28.4",
+    "css-loader": "^6.7.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "2.1.1",
